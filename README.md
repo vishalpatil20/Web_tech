@@ -1,1 +1,1 @@
-# Web_tech
+# Notes Management app
