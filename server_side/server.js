@@ -2,6 +2,26 @@ const express =  require('express') // calling express
 const app = express(); // backend server
 const bcrypt = require('bcrypt') // used to hash the password
 const path = require('path'); // handles the path in the client side
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+    host:'localhost',
+    user: 'root',
+    password:'8088713340',
+    database:'user_auth'
+});
+
+connection.connect();
+
+connection.query('SHOW DATABASES', function(error, results, fields) {
+    if (error) {
+      console.error('Error while fetching databases:', error);
+      // Handle the error here (send an error response, perform a fallback action, etc.)
+    } else {
+      console.log('List of databases:', results);
+      connection.end(); // Close the connection after querying the databases
+    }
+  });
 //allowing app to use json file
 app.use(express.json())
 //calling the api for the user
@@ -48,3 +68,6 @@ app.use(express.static(path.join(__dirname, '..', 'client_side')));
 app.listen(3000,() =>{
     console.log('server is running fine on port 3000')
 })
+
+
+
