@@ -1,8 +1,10 @@
-const express =  require('express')
-const app = express();
-const bcrypt = require('bcrypt')
+const express =  require('express') // calling express
+const app = express(); // backend server
+const bcrypt = require('bcrypt') // used to hash the password
+const path = require('path'); // handles the path in the client side
+//allowing app to use json file
 app.use(express.json())
-
+//calling the api for the user
 const users = []
 
 // get users
@@ -20,9 +22,9 @@ app.post('/users', async(req,res)=>{
     catch{
         res.status(500).send()
     }
-
-
 })
+
+//login for the user
 app.post('/users/login', async(req,res) =>{
     const user = users.find(user => user.name = req.body.name)
     if(user == null){
@@ -40,5 +42,9 @@ app.post('/users/login', async(req,res) =>{
         res.status(500).send()
     }
 })
+//used for serving the user file
+app.use(express.static(path.join(__dirname, '..', 'client_side')));
 
-app.listen(3000)
+app.listen(3000,() =>{
+    console.log('server is running fine on port 3000')
+})
