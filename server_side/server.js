@@ -3,22 +3,24 @@ const app = express(); // backend server
 const bcrypt = require('bcrypt') // used to hash the password
 const path = require('path'); // handles the path in the client side
 const mysql = require('mysql2');
+require('dotenv').config();
+
 
 const connection = mysql.createConnection({
-    host:'localhost',
-    user: 'root',
-    password:'8088713340',
-    database:'user_auth'
+    host:'process.env.DBhost',
+    user: 'process.env.DBuser',
+    password:'process.env.DBpassword',
+    database:'process.env.DBdatabase'
 });
 
 connection.connect();
 
-connection.query('SHOW DATABASES', function(error, results, fields) {
+connection.query('SELECT * FROM user_auth.users;', function(error, results, fields) {
     if (error) {
       console.error('Error while fetching databases:', error);
       // Handle the error here (send an error response, perform a fallback action, etc.)
     } else {
-      console.log('List of databases:', results);
+      console.log('List of user  and there password:', results);
       connection.end(); // Close the connection after querying the databases
     }
   });
