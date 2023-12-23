@@ -1,75 +1,130 @@
-const express =  require('express') // calling express
-const app = express(); // backend server
-const bcrypt = require('bcrypt') // used to hash the password
-const path = require('path'); // handles the path in the client side
+const express = require('express');
+const app = express();
+const bcrypt = require('bcrypt');
+const path = require('path');
 const mysql = require('mysql2');
+const cors = require('cors'); // Import the 'cors' package
+const PORT = 3000;
+
+// Middleware
+app.use(express.json()); // Body parser middleware
+app.use(express.static(path.join(__dirname, '..', 'client_side'))); // Static files serving
+app.use(cors());
+
+
 require('dotenv').config();
 
-
+// MySQL Connection
 const connection = mysql.createConnection({
-    host:'process.env.DBhost',
-    user: 'process.env.DBuser',
-    password:'process.env.DBpassword',
-    database:'process.env.DBdatabase'
+  host: 'localhost',
+  user: 'root',
+  password: '8088713340',
+  database: 'user_auth'
 });
 
-connection.connect();
+// Connect to MySQL
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    // Handle connection error here
+  } else {
+    console.log('Connected to MySQL database');
+  }
+});
 
-connection.query('SELECT * FROM user_auth.users;', function(error, results, fields) {
-    if (error) {
-      console.error('Error while fetching databases:', error);
-      // Handle the error here (send an error response, perform a fallback action, etc.)
-    } else {
-      console.log('List of user  and there password:', results);
-      connection.end(); // Close the connection after querying the databases
+// Routes
+app.get('/', (req, res) => {
+    res.send('Welcome to the server!'); // Or render an HTML file here
+  });
+
+app.get('/users', async (req, res) => {
+
+    try {
+      // Fetch users from the database and send as JSON response
+      const users = await getUserDataFromDatabase(); // Implement this function
+      res.json(users);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      res.status(500).send('Internal Server Error');
     }
   });
-//allowing app to use json file
-app.use(express.json())
-//calling the api for the user
-const users = []
-
-// get users
-app.get('/users', (req,res)=>{
-    res.json(users)
-})
-// creat users
-app.post('/users', async(req,res)=>{
-    try{
-        const hasspass = await bcrypt.hash(req.body.password,10)
-        const user = { name: req.body.name, password: hasspass }
-        users.push(user)
-        res.status(201).send()
-    }
-    catch{
-        res.status(500).send()
-    }
-})
-
-//login for the user
-app.post('/users/login', async(req,res) =>{
-    const user = users.find(user => user.name = req.body.name)
-    if(user == null){
-        return res.status(400).send('Cannot find user')
-    }
-    try{
-        if(await bcrypt.compare(req.body.password,user.password)){
-            res.status(200).send('Success')
+// user get
+const getUserDataFromDatabase = () => {
+    return new Promise((resolve, reject) => {
+      connection.query('SELECT * FROM users', (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
         }
-        else{
-            res.send('Not allowed')
+      });
+    });
+  };
+  app.get('/register', (req, res) => {
+    res.send(); // Or render an HTML file here
+  });
+
+// Register/Create User endpoint
+app.post('/register', async (req, res) => {
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const newUser = { username: req.body.username, password: hashedPassword };
+      console.log(username);
+      let sql ="INSERT INTO users (username, password) VALUES (?, ?)"
+      connection.query(sql, [newUser.username, newUser.password], (err, result) => {
+        if (err) {
+          console.error('Error creating user:', err);
+          res.status(500).send('Internal Server Error');
+        } else {
+          console.log('User created successfully');
+          res.status(201).send('User created successfully');
         }
+      });
+    } catch (error) {
+      console.error('Error creating user:', error);
+      res.status(500).send('Internal Server Error');
     }
-    catch{
-        res.status(500).send()
-    }
-})
-//used for serving the user file
-app.use(express.static(path.join(__dirname, '..', 'client_side')));
+  });
+  
+// Login endpoint (currently using in-memory array, replace with DB logic)
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
 
-app.listen(3000,() =>{
-    console.log('server is running fine on port 3000')
-})
+  try {
+    // Query the database to find the user based on the provided username
+    connection.query('SELECT * FROM users WHERE username = ?', [username], async (error, results) => {
+      if (error) {
+        console.error('Error finding user:', error);
+        return res.status(500).send('Internal Server Error');
+      }
+
+      if (results.length === 0) {
+        return res.status(400).send('Cannot find user');
+      }
+
+      const user = results[0]; // Assuming username is unique, so we take the first result
+
+      try {
+        // Compare the submitted password with the hashed password retrieved from the database
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (passwordMatch) {
+          res.status(200).send('Login successful');
+        } else {
+          res.status(401).send('Unauthorized');
+        }
+      } catch (compareError) {
+        console.error('Password comparison error:', compareError);
+        res.status(500).send('Internal Server Error');
+      }
+    });
+  } catch (queryError) {
+    console.error('Query error:', queryError);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 
-
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

@@ -1,10 +1,10 @@
 // frontend side of the login side check js once
 document.getElementById('loginForm').addEventListener('submit',async(Event) => {
     Event.preventDefault()
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
 
-    const response = await fetch('/users/login', {
+    const response = await fetch('/login', {
         method:'POST',
         headers: {
             'Content-Type':'application/json'
@@ -16,6 +16,6 @@ document.getElementById('loginForm').addEventListener('submit',async(Event) => {
         document.getElementById('message').textContent =result;
     }
     else{
-        document.getElementById('meassage').textContent = `Error: ${result}`;
+        document.getElementById('message').textContent = `Error: ${result}`;
     }
 });
