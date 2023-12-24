@@ -1,0 +1,195 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+	font-family: 'popins',sans-serif;
+}
+
+
+body {
+    font: 400 1em/1.5 "Neuton";
+    background:#1E2022; 
+    color: rgba(255,255,255,.25);
+    text-align: center;
+    margin: 0;
+	overflow-x: hidden;
+}
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    transition: 0.6s;
+	padding: 40px 100px;
+	z-index: 100000;
+}
+header.sticky{
+	padding: 5px 100px;
+	background: #EEEEEE;
+}
+header .logo{
+	position: relative;
+	font-weight: 700;
+	color: antiquewhite;
+	text-decoration: none;
+	font-size: 2em;
+    text-transform:uppercase;
+	letter-spacing: 2px;
+	transition: 0.6s;
+}
+header ul{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+header ul li{
+	position: relative;
+	list-style: none;
+}
+header ul li a{
+	position: relative;
+	margin: 0 15px;
+	text-decoration: none;
+	color: #fff;
+	letter-spacing: 2px;
+	font-weight: 500px;
+	transition: 0.6s;
+}
+.banner{
+	position: relative;
+	width: 100%;
+
+	background-size: cover;
+}
+header.sticky .logo,
+header.sticky ul li a{
+	color: #000;
+}
+
+
+
+#neonShadow{
+	height:50px;
+	width:100px;
+	border:none;
+	border-radius:50px;
+	transition:0.3s;
+	background-color:rgba(0, 0, 0, 0.3);
+	animation: glow 1s infinite ;
+	transition:0.5s;
+	margin: 10px;
+  }
+ #neonShadow span{
+	  display: block;
+	  width: 100%;
+	  height: 100%;
+	  font-family: Arial, Helvetica, sans-serif;
+	  font-weight: 700;
+	  padding-top: 15%;
+	  padding-right: 2.5%;
+	  margin-right: 0px;
+	  font-size: 1.015rem;
+	  transition: 0.3s;
+	  opacity: 0;
+	  }
+	  #neonShadow  span:hover{
+	  transition: 0.3s;
+	  opacity: 1;
+	  font-weight: 700;
+	  }
+  
+  #neonShadow:hover{
+	transform:translateX(-20px)rotate(30deg);
+	border-radius:5px;
+	background-color:#EEEEEE;
+	transition:0.5s;
+	cursor: pointer;
+  }
+  
+  @keyframes glow{
+	0%{
+	box-shadow: 1px 1px 5px rgb(50, 50, 50),-5px -5px 20px rgb(50, 50, 50);}
+	
+	50%{
+	box-shadow: 1px 1px 5px rgb(50, 50, 50),-5px -5px 20px rgb(50, 50, 50)
+	}
+	100%{
+	box-shadow: 1px 1px 5px rgb(77, 156, 21),-5px -5px 20px rgb(10, 14, 25)
+	}
+  }
+  
+  
+
+
+
+
+
+
+
+
+#button-id{
+	border: black;
+	background: #0e0e0e;
+	padding: 8px 22px;
+	border-radius: 6px;
+	color:#fff;
+	font-weight: bold;
+	font-size: 15px;
+	transition: all 0.2s ease;
+}
+#button-id:hover{
+	transform:scale(0.96);
+	cursor: pointer;
+}
+
+
+
+#mid-section {
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    display: inline-block;
+    border: 4px double rgba(255,255,255,.25);
+    border-width: 4px 0px;
+    padding: 1.5em 0em;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 40em;
+    margin: 0 0 0 -20em;
+	-webkit-box-shadow: 1px 1px 129px -44px rgba(247,247,247,1);
+	-moz-box-shadow: 1px 1px 129px -44px rgba(247,247,247,1);
+	box-shadow: 1px 1px 129px -44px rgba(247,247,247,1);
+
+
+#mid-section-span {
+    font: 700 3em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: .25em 0 .325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255,255,255,.5);
+
+    /* Clip Background Image */
+    background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Animate Background Image */
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 70s linear infinite;
+
+    /* Activate hardware acceleration for smoother animations */
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+}
+}
+
+/* Animate Background Image */
+@-webkit-keyframes aitf {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
