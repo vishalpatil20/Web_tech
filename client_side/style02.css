@@ -1,0 +1,87 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+	font-family: 'popins',sans-serif;
+    background-color:#F0F5F9;
+}
+#Signup-box{
+    padding: 16px;
+    width: 360px;
+    height: 500px;
+    margin: auto;
+    border-radius: 3px;
+
+}
+#Signup-box h2{
+    margin: 12px;
+}
+
+input[type=text], input[type=password] {
+    width: 300px;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #EEEEEE;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  hr {
+    border: 1px solid #EEEEEE;
+    margin-bottom: 25px;
+  }
+  #registrationForm{
+    border:2px solid #C9D6DF;
+}
+#loginForm{
+    border:2px solid #C9D6DF;
+
+}
+#registerUsername,#registerPassword{
+    margin: 12px;
+}
+
+#registerButton,#loginButton{ 
+      background-color: #929AAB;
+  color: rgb(240, 235, 235);
+  padding: 14px 20px;
+  font-size: 14px;
+  border-radius: 20px;
+  margin: 8px 10px;
+  border: none;
+  cursor: pointer;
+  width: 300px;
+  opacity: 0.9;
+}
+#registerButton,#loginButton:hover{
+opacity:1;
+}
+#account-para{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 96px;
+    cursor: pointer;
+}
+#login-box{
+    padding: 16px;
+    width: 360px;
+    height: 500px;
+    margin: auto;
+    border-radius: 3px;
+    margin-top: 80px;
+}
+#account-para-2{
+    text-align: center;
+    font-size: 18px;
+    margin-top: -100px;
+}
+#login-box h1{
+    padding: 16px;
+}
+#loginUsername,#loginPassword{
+    margin:12px;
+}
