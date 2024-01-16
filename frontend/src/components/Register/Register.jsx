@@ -5,24 +5,26 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [registrationMessage, setRegistrationMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/register', {
+      const response = await axios.post('http://localhost:3001/user/register', {
         username,
         email,
         password,
       });
 
-      console.log(response.data);
+      setRegistrationMessage(response.data.message); // Assuming your server returns a 'message' property
     } catch (error) {
       console.error(error);
+      setRegistrationMessage('Registration failed. Please try again.'); // Display an error message
     }
   };
-
   return (
+    <div>
     <form onSubmit={handleSubmit}>
       <label>
         Username:
@@ -41,6 +43,13 @@ const Register = () => {
       <br />
       <button type="submit">Register</button>
     </form>
+    {registrationMessage && (
+        <div className="mt-4 text-green-500">
+          {registrationMessage}
+        </div>
+      )}
+  </div>
+
   );
 };
 
