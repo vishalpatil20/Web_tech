@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Prisma
+/prisma/*.db*
+/prisma/client
+/prisma/*.log
+/prisma/*.json
+/prisma/*.lock
+/prisma/*.migration.sql
+/prisma/*.schema
+/prisma/client/
