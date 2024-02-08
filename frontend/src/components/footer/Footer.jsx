@@ -71,9 +71,15 @@ export default function Footer() {
                 <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <span className="text-sm text-gray-500 sm:text-center">
-                        © 2023
-                        <a href="https://hiteshchoudhary.com/" className="hover:underline">
-                            hiteshchoudhary
+                          © 2024 {' '}
+                        <a href="https://github.com/vishalpatil20" className="hover:underline">
+                            Vishal Patil | {' '}
+                        </a>
+                        <a href="https://github.com/ShashankPatil35" className="hover:underline">
+                            Shashank Patil | {' '}
+                        </a>
+                        <a href="https://github.com/Pavanks5" className="hover:underline">
+                           Pavan | {' '}
                         </a>
                         . All Rights Reserved.
                     </span>
