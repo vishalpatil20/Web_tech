@@ -13,7 +13,7 @@ export default function About() {
                     </div>
                     <div className="md:7/12 lg:w-6/12">
                         <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">
-                            Notes Management App!!!!!!!!!!!
+                            Notes Management App!!!
                         </h2>
                         <p className="mt-6 text-gray-600">
                         A notes management app serves as a digital platform designed to streamline the organization, creation, and retrieval of notes, providing users with a centralized and efficient solution
