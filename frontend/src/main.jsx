@@ -1,59 +1,68 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+// import App from './App.jsx'
 import './index.css'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import Home from './components/Home/Home.jsx'
-import About from './components/about/About.jsx'
-import Layout from './Layout.jsx'
-import Contact from './components/Contact/Contact.jsx'
-import User from './components/User/User.jsx'
-import Github, { githubInfoLoader } from './components/Github/Github.jsx'
-import Register from './components/Register/Register.jsx'
+import Root from './routes/root.jsx'
+import ErrorPage from "./error-page";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Home from './components/Home';
+import Lab from './components/Lab';
+import Read from './components/Read';
+import Module2 from './components/Module2';
+import Module1 from './components/Module1';
+import Module3 from './components/Module3.jsx';
+import Module4 from './components/Module4.jsx';
 
-
-// const router = createBrowserRouter([
-//   {
-//     path:'/',
-//     element:<Layout/>,
-//     children:[
-//     { path:"",
-//       element:<Home/>
-//     },
-//       {
-//         path:"about",
-//         element:<About/>
-//       },
-//       {
-//         path:"contact",
-//         element:<Contact/>
-//       }
-//     ]
-//   }
-// ])
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<Layout/>}> 
-    <Route path='' element={<Home/>}/>
-    <Route path='about' element={<About/>}/>
-    <Route path='contact' element={<Contact/>}/>
-    <Route path='user/:userid' element={<User/>}/>
-    <Route path='/Register' element={<Register/>}/>
-
-    <Route
-    loader={githubInfoLoader}
-     path='github' 
-     element={<Github/>}
-     />
-
-    </Route>
-  )
-)
-
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: 'labs/',
+        element: <Lab />
+      },
+      {
+        path: 'read',
+        element: <Read />,
+        children: [
+          {
+            path: 'module1',
+            element: <Module1/>
+          },
+          {
+            path: 'module2',
+            element: <Module2 />
+          },
+          {
+            path: 'module3',
+            element: <Module3 />
+          },
+          {
+            path: 'module4',
+            element: <Module4/>
+          }
+        ]
+      },
+    ],
+  },
+  {
+    path: "labs/",
+    element: <Lab />
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-  <RouterProvider router={router}/>
+    {/* <App /> */}
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
