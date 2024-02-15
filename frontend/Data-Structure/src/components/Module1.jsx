@@ -8,7 +8,7 @@ export default function Module1() {
                 <meta name="description" content="Discover the real-life applications of data structures and their significance in various domains. Explore how data structures such as arrays, linked lists, trees, graphs, and hash tables are used in designing efficient algorithms, optimizing database systems, building search engines, developing social networks, and solving complex computational problems. Learn how mastering data structures can enhance software performance, improve memory utilization, and enable robust data management." />
             </Helmet>
             <div className="w-[90vw] border-2 border-[#ff6633] md:w-[75vw] h-[80vh] p-2 md:bg-slate-50 rounded-xl overflow-y-scroll">
-                <h1 className="text-xl md:text-2xl">What is Data Structure?</h1>
+                <h1 className="text-xl md:text-2xl">Learn about Data Structure?</h1>
                 <p className="text-justify text-[#6a6a6a]">A data structure is a way of organizing and storing data in a computer so that it can be accessed and manipulated efficiently. It provides a set of operations for performing common tasks on the data, such as inserting, deleting, searching, and sorting.</p>
                 <h1 className="my-2 text-xl md:text-2xl text-justify">Type Of Data Structures:</h1>
                 <ol className="list-decimal text-justify px-5 text-[#6a6a6a]">

@@ -11,7 +11,7 @@ export default function Home() {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Data Structure -Home</title>
+        <title>Notes Management App</title>
         <meta
           property="og:url"
           content="https://data-structure-skill.netlify.app/"

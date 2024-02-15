@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet";
 // import Module1 from "./Module1";
 
 export default function Read() {
-    const arr = [{ module: 'Module:1', id: crypto.randomUUID(), in: 1 }, { module: 'Module:2', id: crypto.randomUUID(), in: 2 }];
+    const arr = [{ module: 'About Data Structure', id: crypto.randomUUID(), in: 1 }, { module: 'Applications', id: crypto.randomUUID(), in: 2 },
+    { module: 'JavaScript', id: crypto.randomUUID(), in: 3 },{ module: 'React', id: crypto.randomUUID(), in: 4 }];
     return (
         <>
             <Helmet>
