@@ -1,4 +1,4 @@
-import { BsGithub, BsTwitterX } from "react-icons/bs";
+import { BsGithub, BsIncognito } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Dropdown from "./dropdown";
 
@@ -24,11 +24,12 @@ export default function Navbar() {
           <Link className="active:font-bold" to={"labs/"}>
            NOTES
           </Link>
+          </li>
+
           <li className="ml-2 hover:text-black cursor-pointer hidden md:block ">
           <Link className="active:font-bold" to={"play/"}>
-            Play Area
+            PLAY AREA
           </Link>
-        </li>
         </li>
       </ul>
       <div> </div>
@@ -39,7 +40,10 @@ export default function Navbar() {
           onClick={githubLink}
         />
         <Link className="active:font-bold" to={"sign/"}> 
-        Login
+        <BsIncognito
+          className="mx-2 cursor-pointer"
+          style={{ fontSize: 20 }}
+        />        
         </Link>
         <Dropdown />
       </div>

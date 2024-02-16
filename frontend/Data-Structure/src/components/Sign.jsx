@@ -21,27 +21,27 @@ const RegisterPage = () => {
         e.preventDefault();
     
         try {
-          const response = await axios.post('http://localhost:3001/user/register', formData);
-    
-          console.log('Request Data:', formData);
-          console.log('Server Response:', response.data);
-      // Check if the request was successful
-      if (!response.ok) {
-        throw new Error(`Registration failed with status: ${response.status}`);
-      }
-
-      // Parse the server response as JSON
-      const responseData = await response.json();
-
-      // Handle the server response as needed
-      console.log('Server Response:', responseData);
-
-      // You can also redirect the user to another page or perform additional actions
-    } catch (error) {
-      // Handle error (e.g., show an error message)
-      console.error('Registration failed:', error.message);
-    }
-  };
+            const response = await axios.post('http://localhost:3001/user/register', formData);
+          
+            console.log('Server Response:', response.data);
+          
+            // Check if the request was successful
+            if (response.status !== 200) {
+              throw new Error(`Registration failed with status: ${response.status}`);
+            }
+          
+            // Parse the server response as JSON (if needed, though not necessary in this case)
+            const responseData = response.data;
+          
+            // Handle the server response as needed
+            console.log('Server Response:', responseData);
+          
+            // You can also redirect the user to another page or perform additional actions
+          } catch (error) {
+            // Handle error (e.g., show an error message)
+            console.error('Registration failed:', error.message);
+          }
+        }                  
   return (
     <div className="relative w-full h-screen bg-zinc-800 ">
       <div className="flex justify-center items-center h-full">
