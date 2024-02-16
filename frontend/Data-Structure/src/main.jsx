@@ -16,6 +16,7 @@ import Module1 from './components/Module1';
 import Module3 from './components/Module3.jsx';
 import Module4 from './components/Module4.jsx';
 import PlayArea from './components/PlayArea.jsx';
+import Sign from './components/Sign.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: 'play/',
         element: <PlayArea />
+      },
+      {
+        path: 'sign/',
+        element: <Sign />
       },
       {
         path: 'read',
