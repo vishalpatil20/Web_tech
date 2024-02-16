@@ -15,6 +15,7 @@ import Module2 from './components/Module2';
 import Module1 from './components/Module1';
 import Module3 from './components/Module3.jsx';
 import Module4 from './components/Module4.jsx';
+import PlayArea from './components/PlayArea.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: 'labs/',
         element: <Lab />
+      },
+      {
+        path: 'play/',
+        element: <PlayArea />
       },
       {
         path: 'read',
