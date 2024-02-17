@@ -1,0 +1,8 @@
+// models/data.model.prisma
+
+model Data {
+  id       Int      @id @default(autoincrement())
+  title    String
+  text     String
+  createdAt DateTime @default(now())
+}
