@@ -1,6 +1,7 @@
-import { FcUndo, FcRedo } from "react-icons/fc";
+import { FcUndo, FcRedo,FcOk } from "react-icons/fc";
 import { RiRestartFill } from "react-icons/ri";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Stack() {
   const [val, setVal] = useState("");
@@ -38,21 +39,43 @@ export default function Stack() {
     setUndoStack([]);
     setRedoStack([]);
   };
+  const OkBtn = async () => {
+    const title = window.prompt('Enter the title:');
+    if (title !== null) {
+      try {
+        const response = await axios.post('http://localhost:3001/api/storeData', {
+          title: title,
+          text: val,
+        });
+  
+        if (response.status === 200) {
+          console.log('Data stored successfully');
+        } else {
+          console.error('Failed to store data:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
+    }
+  };
+  
   return (
     <>
       <div className="sm:ml-[10px] m-[10px] md:ml-[18rem] box-border flex flex-col justify-center items-center lg:mt-[10vh]">
         <div className="h-[40vh] w-full lg:w-[80%] md:h-[80vh] flex flex-col items-center">
           <h1 className="text-xl md:text-4xl text-left font-bold mt-3 mb-6">
-            STACK OPERATION
+            CREATE NOTES
           </h1>
           <div className="box-border w-[90%] h-[80%] md:h-[80%] rounded-md flex flex-col items-center justify-center drop-shadow-2xl backdrop-blur-xl bg-gray-200 border-2 border-[#ff6633] md:bg-sky-200 ">
-            <input
-              value={val}
-              onChange={changes}
-              type="text"
-              placeholder="Enter your text"
-              className="p-2 text-[#6a6a6a] focus:outline-sky-400 rounded-xl"
-            />
+          <input
+  value={val}
+  onChange={changes}
+  type="text"
+  placeholder="Enter your text"
+  className="p-2 text-[#6a6a6a] focus:outline-sky-800 rounded-xl"
+  style={{ width: '600px',height:'300px' }} // Adjust the width as needed
+/>
+
             <div className="mt-2 flex justify-evenly ">
               <FcUndo
                 style={{ fontSize: 35 }}
@@ -64,6 +87,12 @@ export default function Stack() {
                 className="mx-3 fill-sky-400"
                 onClick={reset}
               />
+<FcOk
+  style={{ fontSize: 35 }}
+  className="mx-3"
+  onClick={OkBtn}
+/>
+
               <FcRedo
                 style={{ fontSize: 35 }}
                 className="mx-3"

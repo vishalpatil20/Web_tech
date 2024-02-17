@@ -23,14 +23,12 @@ export default function Home() {
         <meta name="keywords" content={seoKeywords} />
       </Helmet>
       <Body
-        link2={"/read/module1"}
         links={"labs/"}
         headQ={Pts.ht1}
         datas={Pts.pt1}
         btnC="bg-[#ff6633]"
         Imgs={"../../images/R.png"}
         Btns1={Btn.btn1}
-        Btns2={Btn.btn2}
         btnPos="justify-between"
       />
       <Body

@@ -31,6 +31,7 @@ export default function Navbar() {
             PLAY AREA
           </Link>
         </li>
+        
       </ul>
       <div> </div>
       <div className="flex items-center">

@@ -1,6 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
 import { Helmet } from "react-helmet";
-// import Module1 from "./Module1";
 
 export default function Read() {
     const arr = [{ module: 'About Data Structure', id: crypto.randomUUID(), in: 1 }, { module: 'Applications', id: crypto.randomUUID(), in: 2 },
@@ -8,7 +7,7 @@ export default function Read() {
     return (
         <>
             <Helmet>
-                <title>Data Structure -Read</title>
+                <title>Notes Manager</title>
                 <meta charSet="utf-8" />
                 <meta name="description" content="Explore the fundamental concepts of data structures and their importance in computer science. Learn about arrays, linked lists, stacks, queues, trees, graphs, and more. Understand how data structures enable efficient storage, retrieval, and manipulation of data, and how they form the building blocks of algorithms and software development. Gain insights into selecting the right data structure for specific tasks and optimizing code performance. Start your journey to master the core foundations of data structures." />
             </Helmet>

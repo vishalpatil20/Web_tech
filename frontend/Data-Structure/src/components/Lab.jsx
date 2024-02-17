@@ -1,13 +1,12 @@
 import { Helmet } from "react-helmet";
 import Stack from "../components/Stack.jsx";
 import SideNavbar from "./SideNavbar.jsx";
-import Module3 from "./Module3.jsx";
 
 export default function Lab() {
   return (
     <>
       <Helmet>
-        <title>Data Structure -lab</title>
+        <title></title>
         <meta charSet="utf-8" />
         <meta
           name="description"
