@@ -3,7 +3,7 @@ import Body from "../components/Body.jsx";
 import { Helmet } from "react-helmet";
 
 export default function Home() {
-  const seoKeywords = "data structures, algorithms, programming, optimization";
+  const seoKeywords = ", programming, optimization";
   const wikiClick = () => {
     window.open("https://en.wikipedia.org/wiki/Data_structure", "_blank");
   };
@@ -17,10 +17,7 @@ export default function Home() {
          // content="https://data-structure-skill.netlify.app/"
          content=""
         />
-        <meta
-          name="description"
-          content="Explore comprehensive resources and tutorials on various data structures. Learn how to efficiently organize, store, and manipulate data with in-depth explanations, algorithms, and practical examples. Enhance your programming skills and optimize your code by mastering data structures for better performance and problem-solving."
-        />
+
         <meta name="keywords" content={seoKeywords} />
       </Helmet>
       <Body

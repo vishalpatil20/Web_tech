@@ -1,7 +1,7 @@
 import { Card, Typography, List, ListItem } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { FcDeleteRow, FcViewDetails } from "react-icons/fc";
+import { FcDeleteRow, } from "react-icons/fc";
 
 export default function DefaultSidebar() {
   const [data, setData] = useState([]);
@@ -48,15 +48,12 @@ export default function DefaultSidebar() {
           <div className="w-6 h-px bg-white"></div>
         </button>
       </div>
-      <Card className="side-bar translate-x-[-100%] md:translate-x-[0%] md:block h-[calc(70vh-48px)] rounded-none w-[20rem] p-4 shadow-xl bg-[#f7f7f7] shadow-blue-gray-900/5">
+      <Card className="side-bar translate-x-[-100%] md:translate-x-[0%] md:block h-[calc(70vh-48px)] rounded-4px w-[20rem] p-4 shadow-xl bg-zinc-400 shadow-blue-gray-900/5">
         <div className="ml-[calc(5vw+56px)] mb-[10px] p-2 md:ml-[0]">
-          <Typography variant="h5" color="blue-gray">
+   <Typography variant="h5" color="blue-gray">
             List of Notes
           </Typography>
-          <FcViewDetails
-                style={{ fontSize: 35 }}
-                className="mx-3"
-              />
+
         </div>
         <List>
           {data.map(item => (

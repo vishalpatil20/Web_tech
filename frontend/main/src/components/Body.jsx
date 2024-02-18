@@ -33,12 +33,11 @@ export default function Body(props) {
         <meta name="keywords" content={seoKeywords} />
       </Helmet>
       <div
-        className="h-auto md:h-screen py-5 flex items-center pt-16 md:pt-0"
+        className="h-auto md:h-screen py-1 flex items-center pt-16 md:pt-0"
         onClick={props.pgLink}
       >
-        {/* bg color for small components */}
-        <div className="flex flex-col md:h-auto lg:h-3/4 xl:h-3/5 p-2 md:flex-row justify-center md:justify-evenly w-11/12 mx-auto items-center bg-gray-200 rounded-2xl shadow-md overflow-hidden">
-          <div className="flex-col p-2 w-full md:w-3/5 order-2">
+        <div className="flex flex-col md:h-auto lg:h-3/4 xl:h-3/5 p-2 md:flex-row justify-center md:justify-evenly w-11/12 mx-auto items-center bg-zinc-400 rounded-2xl shadow-md overflow-hidden">
+          <div className="flex-col p-1 w-full md:w-3/5 order-2">
             <motion.h1
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -51,28 +50,19 @@ export default function Body(props) {
               initial={{ y: 100, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 }}
-              className="text-[#6a6a6a] text-base md:text-[20px] my-3 text-justify"
+              className="text-black text-base md:text-[20px] my-3 text-justify"
             >
               {props.datas}
             </motion.p>
             <div className={`flex flex-col md:flex-row ${props.btnPos} `}>
               <Link to={props.links} className="">
               <button
-                  className={`py-2 my-2 px-4 w-[100%] ${props.visibilty1} bg-green-500 text-white rounded-md transition ease-in-out delay-150  hover:bg-[#7dbc7d] duration-300 text-[15px]`}
+                  className={`py-2 my-2 px-4 w-[100%] ${props.visibilty1} bg-white text-black rounded-md transition ease-in-out delay-150  hover:bg-black hover:text-white duration-300 text-[15px]`}
                 >
-                  {" "}
-                  {/* {props.Btns1} */}
                  Topic
                 </button>
               </Link>
               <Link to={props.link2}>
-                {/* removed button  */}
-              {/* <button
-                  className={`border-2 w-[100%] bg-black ${props.visibilty2} hover:bg-white hover:border-2 transition ease-in-out delay-150 duration-300 hover:border-black  hover:text-black text-white px-5 py-2 rounded-md text-[15px]`}
-                > */}
-              
-                  {/* Notes Section
-                </button> */}
               </Link>
             </div>
           </div>

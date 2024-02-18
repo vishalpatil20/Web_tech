@@ -102,9 +102,9 @@ export default function Stack() {
           </div>
         </div>
         <div className="box-border border-2 border-[#060604] w-[90%] flex flex-col rounded-md bg-slate-100 p-5 my-10 shadow-md">
-          <h1 className="text-2xl font-bold">HOW IT WORK?</h1>
-          <p className="text-justify text-[#6a6a6a] font-sans">
-            we are using React hooks useState to manage the state of actions,
+          <h1 className="text-2xl font-bold text-gray-400">HOW IT WORK?</h1>
+          <p className="text-justify text-black font-sans">
+            We are using React hooks useState to manage the state of actions,
             undo stack, and redo stack. The performAction function adds a new
             action to the actions state and updates the undo and redo stacks
             accordingly. The undo function removes the last action from the undo
@@ -112,7 +112,7 @@ export default function Stack() {
             Similarly, the redo function removes the last action from the redo
             stack, adds it to the undo stack, and updates the actions state.
           </p>
-          <p className="text-justify text-[#6a6a6a] font-sans">
+          <p className="text-justify text-black font-sans">
             You can use this UndoRedoExample component in your React application
             to test the undo/redo functionality by performing actions and
             clicking on the undo and redo buttons. The console log statements

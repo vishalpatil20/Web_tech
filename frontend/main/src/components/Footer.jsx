@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="bg-gray-900 text-white px-4 py-8">
+    <footer class="bg-gray-900 text-gray-400 px-4 py-8">
       <div class="flex flex-col justify-between gap-8 md:flex-row md:pt-3 sm:px-4 lg:px-12 lg:justify-start lg:gap-44">
         <div class="mb-4 md:mb-0">
           <h1 class="text-3xl font-bold mt-4 md:mt-0">NOTES MANAGEMENT</h1>

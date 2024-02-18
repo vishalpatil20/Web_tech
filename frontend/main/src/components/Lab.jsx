@@ -17,7 +17,6 @@ export default function Lab() {
         <SideNavbar />
         <Stack />
         
-        {/* {selectedNavItem === 'Module3' && <Module3 />} */}
       </div>
     </>
   );

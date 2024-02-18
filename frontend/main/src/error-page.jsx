@@ -5,9 +5,9 @@ export default function ErrorPage() {
   console.error(error);
 
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, Under Construction.</p>
+    <div id="error-page " className="text-white flex justify-center items-center h-screen">
+      <h1>Oops!!!...</h1>
+      <p>   Sorry, Under Construction.</p>
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
