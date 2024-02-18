@@ -1,7 +1,7 @@
 import { BsGithub, BsIncognito } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Dropdown from "./dropdown";
-
+import { LuLogIn } from "react-icons/lu";
 export default function Navbar() {
   const githubLink = () => {
     // this change later
@@ -41,7 +41,7 @@ export default function Navbar() {
           onClick={githubLink}
         />
         <Link className="active:font-bold" to={"sign/"}> 
-        <BsIncognito
+        <LuLogIn
           className="mx-2 cursor-pointer"
           style={{ fontSize: 20 }}
         />        
