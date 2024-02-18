@@ -14,7 +14,8 @@ export default function Home() {
         <title>Notes Management App</title>
         <meta
           property="og:url"
-          content="https://data-structure-skill.netlify.app/"
+         // content="https://data-structure-skill.netlify.app/"
+         content=""
         />
         <meta
           name="description"
