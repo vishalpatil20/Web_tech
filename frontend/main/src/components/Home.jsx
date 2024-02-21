@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 export default function Home() {
   const seoKeywords = ", programming, optimization";
   const wikiClick = () => {
-    window.open("https://en.wikipedia.org/wiki/Data_structure", "_blank");
+   // window.open("", "_blank");
   };
   return (
     <div>
@@ -14,7 +14,6 @@ export default function Home() {
         <title>Notes Management App</title>
         <meta
           property="og:url"
-         // content="https://data-structure-skill.netlify.app/"
          content=""
         />
 
