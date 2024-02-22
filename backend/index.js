@@ -1,3 +1,4 @@
+// server.js
 const express = require('express');
 const cors = require('cors');
 
@@ -13,7 +14,7 @@ app.use(express.json());
 
 // get requests
 app.use('/api', routes);
-// post request
+// post requests
 app.use('/user', userRoutes);
 app.use('/api', dataRoute);
 

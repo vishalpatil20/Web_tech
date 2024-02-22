@@ -12,7 +12,7 @@ import Lab from './components/Lab';
 import Read from './components/Read';
 
 import PlayArea from './components/PlayArea.jsx';
-import Sign from './components/Sign.jsx';
+import AuthPage from './components/Sign.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'sign/',
-        element: <Sign />
+        element: <AuthPage />
       },
       {
         path: 'read',

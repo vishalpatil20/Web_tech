@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Add this line
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
+const AuthPage = () => {
+    const navigate = useNavigate();
 
-const RegisterPage = () => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
         password: '',
     });
-    const [registrationSuccess, setRegistrationSuccess] = useState(false); // State to manage success message
-    const [errorMessage, setErrorMessage] = useState(''); // State to manage error message
+    const [registrationSuccess, setRegistrationSuccess] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isRegisterTab, setRegisterTab] = useState(true);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -21,54 +24,63 @@ const RegisterPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         try {
-            const response = await axios.post('http://localhost:3001/user/register', formData);
-
+            const endpoint = isRegisterTab ? 'register' : 'login';
+            const response = await axios.post(`http://localhost:3001/user/${endpoint}`, formData);
+    
             console.log('Server Response:', response.data);
-
-            // Check if the request was successful
+    
             if (response.status !== 200) {
-                throw new Error(`Registration failed with status: ${response.status}`);
+                throw new Error(`${isRegisterTab ? 'Registration' : 'Login'} failed with status: ${response.status}`);
             }
-
-            // Parse the server response as JSON (if needed, though not necessary in this case)
+    
             const responseData = response.data;
-
-            // Handle the server response as needed
+    
             console.log('Server Response:', responseData);
-
-            // Set registration success state to true
-            setRegistrationSuccess(true);
+    
+            if (isRegisterTab) {
+                setRegistrationSuccess(true);
+            } else {
+                navigate('/', { state: { userName: responseData.user.username } });
+                console.log('Login Successful!');
+            }
         } catch (error) {
-            // Handle error (e.g., show an error message)
-            console.error('Registration failed:', error.message);
-
+            console.error(`${isRegisterTab ? 'Registration' : 'Login'} failed:`, error.message);
+    
             if (error.response && error.response.data && error.response.data.error) {
                 setErrorMessage(error.response.data.error);
             } else {
-                setErrorMessage('An error occurred during registration.');
+                setErrorMessage(`An error occurred during ${isRegisterTab ? 'registration' : 'login'}.`);
             }
         }
-    }
+    };
+
+    const toggleTab = () => {
+        setRegisterTab((prev) => !prev);
+        setRegistrationSuccess(false);
+        setErrorMessage('');
+    };
 
     return (
         <div className="relative w-full h-screen bg-gray-800 ">
             <div className="flex justify-center items-center h-full">
                 <form onSubmit={handleSubmit} className="bg-zinc-400 p-14 rounded-md shadow-md">
-                    <h2 className="text-6xl font-bold mb-4">Register</h2>
-                    <div className="mb-4">
-                        <label htmlFor="username" className="block text-gray-800 text-sm font-medium mb-2">Username</label>
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            value={formData.username}
-                            onChange={handleInputChange}
-                            className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-black"
-                            required
-                        />
-                    </div>
+                    <h2 className="text-6xl font-bold mb-4">{isRegisterTab ? 'Register' : 'Login'}</h2>
+                    {isRegisterTab && (
+                        <div className="mb-4">
+                            <label htmlFor="username" className="block text-gray-800 text-sm font-medium mb-2">Username</label>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                value={formData.username}
+                                onChange={handleInputChange}
+                                className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-black"
+                                required
+                            />
+                        </div>
+                    )}
                     <div className="mb-4">
                         <label htmlFor="email" className="block text-gray-800 text-sm font-medium mb-2">Email</label>
                         <input
@@ -94,21 +106,27 @@ const RegisterPage = () => {
                         />
                     </div>
                     <button type="submit" className="items-center bg-black text-white rounded-md py-2 px-4 hover:bg-white hover:text-black focus:outline-none focus:ring focus:focus:border-black">
-                        Register
+                        {isRegisterTab ? 'Register' : 'Login'}
                     </button>
                 </form>
                 {registrationSuccess && (
-                    <div className="absolute bottom-4 bg-green-500 text-white p-2 rounded-md">
-                        Registration Successful!
+                    <div className="absolute bottom-10 bg-green-500 text-white p-2 rounded-md">
+                        {isRegisterTab ? 'Registration Successful!' : 'Login Successful!'}
                     </div>
                 )}
                 {errorMessage && (
-                    <div className="absolute bottom-4 bg-red-500 text-white p-2 rounded-md">
-                        Email Exist!! Use another Email
+                    <div className="absolute bottom-10 bg-red-500 text-white p-2 rounded-md">
+                        {isRegisterTab ? 'Email Exist!! Use another Email' : 'Login failed'}
                     </div>
                 )}
+                <div className="absolute bottom-4 text-white">
+                    <button onClick={toggleTab} className="underline">
+                        {isRegisterTab ? 'Already have an account? Login here.' : 'Don\'t have an account? Register here.'}
+                    </button>
+                </div>
             </div>
         </div>
     );
 };
-export default RegisterPage;
+
+export default AuthPage;
