@@ -10,7 +10,7 @@ export default function Home() {
 
   const seoKeywords = ", programming, optimization";
   const wikiClick = () => {
-    // window.open("", "_blank");
+    window.open("https://en.wikipedia.org/wiki/Study_Notes", "_blank");
   };
 
   return (

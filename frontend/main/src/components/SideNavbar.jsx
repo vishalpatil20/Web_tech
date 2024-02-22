@@ -24,13 +24,18 @@ export default function DefaultSidebar() {
     sidebar.classList.toggle("translate-x-[-100%]");
   };
   const deleteItem = async (id) => {
+    const title = window.prompt('Type delete to delete the note?');
+    if (title === 'delete') {
     try {
       await axios.delete(`http://localhost:3001/api/data/${id}`);
       fetchData();
     } catch (error) {
       console.error('Error deleting data:', error);
     }
+  }else{
+    const title = window.alert('Deletion failed');
   };
+}
 
   return (
     <div className="fixed z-20">
